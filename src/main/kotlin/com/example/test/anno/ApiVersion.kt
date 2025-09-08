@@ -54,12 +54,12 @@ annotation class ApiVersion(
      * 当未指定value时，该参数用于定义支持的最大版本号
      * 默认值为Int.MAX_VALUE，表示不限制最大版本
      */
-    val max: Int = Int.MAX_VALUE,
-    
-    /**
-     * 用于获取版本信息的请求头名称
-     * 客户端需要在请求头中通过该名称传递版本号
-     * 默认值为"version"
-     */
-    val header: String = "version"
+    val max: Int = Int.MAX_VALUE
 )
+
+/**
+ * 用于获取版本信息的请求头名称
+ * 客户端需要在请求头中通过该名称传递版本号
+ */
+val header: String
+    get() = "api-version"
