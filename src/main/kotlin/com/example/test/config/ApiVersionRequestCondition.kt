@@ -99,7 +99,7 @@ class ApiVersionRequestCondition(
         if (this.value == -1 && other.value != -1) return 1
 
         // 都是指定版本时，版本号大的优先
-        if (this.value != -1 && other.value != -1) {
+        if (this.value != -1) {
             return other.value.compareTo(this.value)
         }
 
