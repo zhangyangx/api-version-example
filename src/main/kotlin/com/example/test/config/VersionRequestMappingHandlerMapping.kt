@@ -1,7 +1,6 @@
 package com.example.test.config
 
 import com.example.test.anno.ApiVersion
-import com.example.test.anno.header
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
 import java.lang.reflect.Method
 
@@ -23,7 +22,7 @@ class VersionRequestMappingHandlerMapping : RequestMappingHandlerMapping() {
     override fun getCustomTypeCondition(handlerType: Class<*>): ApiVersionRequestCondition? {
         val av = handlerType.getAnnotation(ApiVersion::class.java)
         return av?.let {
-            ApiVersionRequestCondition(it.value, it.min, it.max, header)
+            ApiVersionRequestCondition(it.value, it.min, it.max, it.header)
         }
     }
 
@@ -36,7 +35,7 @@ class VersionRequestMappingHandlerMapping : RequestMappingHandlerMapping() {
     override fun getCustomMethodCondition(method: Method): ApiVersionRequestCondition? {
         val av = method.getAnnotation(ApiVersion::class.java)
         return av?.let {
-            ApiVersionRequestCondition(it.value, it.min, it.max, header)
+            ApiVersionRequestCondition(it.value, it.min, it.max, it.header)
         }
     }
 }
